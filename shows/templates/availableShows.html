@@ -1,0 +1,13 @@
+{% extends 'base_layout.html' %} {% block content %}
+<h1>Movie List</h1>
+<div class="availableShowList">
+  <a href="{% url 'shows:addNewMovie' %}">Schedule a new Movie</a>
+  <a href="{% url 'shows:editMovie' %}">Edit an existing Movie</a>
+  {% for newShow in shows %}
+  <div class="showBlock">
+    <img src="{{newShow.posterImage.url}}" class="posterImage" />
+    <h2>{{newShow.title}}</h2>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

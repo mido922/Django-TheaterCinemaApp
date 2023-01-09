@@ -1,0 +1,21 @@
+{% extends 'base_layout.html' %} {% block content %}
+
+<div class="addNewMovie">
+  <h1>You are editing {{movie.title}}</h1>
+  <p>Details:
+    ID: {{movie.id}}
+    Name: {{movie.title}}
+    Date: {{movie.date}}
+    Poster Image: <a href="{{movie.posterImage.url}}">Click Here</a>
+    Start Time: {{movie.startTime}}
+    End Time: {{movie.endTime}}
+    Screening Room: {{movie.screeningRoom}}
+  </p>
+  <form class="site-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Change">
+  </form>
+<div>
+
+{%endblock%}

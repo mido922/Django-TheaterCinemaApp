@@ -1,0 +1,11 @@
+.showBlock {
+  height: 200px;
+  width: 600px;
+  background-color: orange;
+  display: flex
+}
+
+.posterImage {
+  height: 200px;
+  width: 200px;
+}

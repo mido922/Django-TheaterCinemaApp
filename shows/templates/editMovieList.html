@@ -1,0 +1,15 @@
+{% extends 'base_layout.html' %}
+
+
+{% block content %}
+<h1>Which movie would you like to edit?</h1>
+<div class="availableShowList">
+  {% for newShow in shows %}
+  <div class="showBlock">
+    <img src={{newShow.posterImage.url}} class="posterImage">
+    <h2>{{newShow.title}}</h2>
+    <a href="{% url 'shows:editMovieDetails' slug=newShow.slug %}">Edit Movie</a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
