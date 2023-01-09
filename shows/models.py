@@ -20,6 +20,7 @@ class newShow(models.Model):
   startTime = models.TimeField(default='00:00')
   endTime = models.TimeField(default='00:00')
   screeningRoom = models.IntegerField(choices=screeningRoomChoices.choices, default='0')
+  remainingSeats = models.IntegerField(default=0)
 
   def __str__(self):
     return self.title
