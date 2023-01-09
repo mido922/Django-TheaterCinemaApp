@@ -5,8 +5,10 @@ from . import views
 app_name = 'shows'
 
 urlpatterns = [
+   path('checkMovie/<slug:slug>/', views.checkMovieDetails, name ="checkMovieDetails"),
    path('editMovie/<slug:slug>/', views.editMovieDetails, name ="editMovieDetails"),
    path('editMovieList/', views.editMovieList, name="editMovie"),
    path('addNewMovie', views.addNewMovie, name="addNewMovie"),
    path('', views.show_list, name="list"),
 ]
+

@@ -7,6 +7,7 @@
   <div class="showBlock">
     <img src="{{newShow.posterImage.url}}" class="posterImage" />
     <h2>{{newShow.title}}</h2>
+    <a href="{% url 'shows:checkMovieDetails' slug=newShow.slug %}">Check this movie.</a>
   </div>
   {% endfor %}
 </div>

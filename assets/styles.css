@@ -9,3 +9,13 @@
   height: 200px;
   width: 200px;
 }
+
+#logoImage {
+  height: 200px;
+  width: 200px;
+}
+
+#navbar {
+  height: 200px;
+  background-color: blue;
+}

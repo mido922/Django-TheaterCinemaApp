@@ -41,3 +41,8 @@ def editMovieDetails(request,slug):
     movie = newShow.objects.get(slug=slug)
     form = forms.addNewShow(instance=movie)
     return render(request, 'editMovieDetails.html', {'movie':movie,'form':form})
+
+def checkMovieDetails(request,slug):
+  movie = newShow.objects.get(slug=slug)
+  return render(request, 'checkMovieDetails.html', {'movie':movie})
+
