@@ -1,0 +1,22 @@
+{% extends 'base_layout.html' %} {% block content %} {% load static %}
+
+<div class="movieDetails">
+  <div class="movie">
+    <img src="{{movie.posterImage.url}}" width="200px," height="200px" />
+    <h2>{{movie.title}}</h2>
+
+    <div id="seatsDiagram">
+      {% for i in 'x'|rjust:"30" %} {% if forloop.counter < movie.remainingSeats
+      %}
+
+      <div class="seatIndicator">{{forloop.counter}}Yes</div>
+
+      {% else %}
+
+      <div class="seatIndicator">{{forloop.counter}}: No</div>
+      D {% endif %} {% endfor %}
+    </div>
+  </div>
+</div>
+
+{%endblock%}

@@ -1,28 +1,26 @@
-{% extends 'base_layout.html' %} {% block content %}
+{% extends 'base_layout.html' %} {% block content %} {% load static %}
 
 <div class="movieDetails">
   <div class="movie">
-    <img src="{{movie.posterImage.url}}" width="200px," height="200px" />
+    <img src="{{movie.posterImage.url}}" style="width: 200px;height: 200px"/>
     <h2>{{movie.title}}</h2>
 
-    <div id="seatsDiagram" style="width: 400px">
 
+    <h2>Seat Availability: </h2>
 
-
-
-      {% for i in 'x'|rjust:"30" %} 
-      
-      {% if forloop.counter < movie.remainingSeats %}
-
-      <div class="seatIndicator">{{forloop.counter}}Yes</div>
-
-      {% else %}
-
-      <div class="seatIndicator">{{forloop.counter}}: No</div>
-      
-      {% endif %} {% endfor %}
+    <div id="seatsDiagram">
+      {% for i in totalSeats %} 
+        {% if forloop.counter < movie.remainingSeats %}
+          <img src="{% static 'unreservedSeat.png' %}" class="seatIndicator"></img>
+        {% else %}
+          <img src="{% static 'reservedSeat.png' %}" class="seatIndicator"></img>
+        {% endif %} 
+      {% endfor %}
     </div>
   </div>
 </div>
 
 {%endblock%}
+
+
+#'x'|rjust:20 

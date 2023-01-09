@@ -2,7 +2,10 @@
   height: 200px;
   width: 600px;
   background-color: orange;
-  display: flex
+  display: flex;
+  margin-bottom: 20px;
+  padding: 5px;
+  border-radius: 2px;
 }
 
 .posterImage {
@@ -11,11 +14,37 @@
 }
 
 #logoImage {
-  height: 200px;
-  width: 200px;
+  height: 100%;
+  width: 100px;
 }
 
 #navbar {
-  height: 200px;
-  background-color: blue;
+  height: 100px;
+  background-color: rgb(125, 125, 255);
+  display: flex;
+  align-items: center;
+}
+
+#seatsDiagram {
+  width: 800px;
+  height: 400px;
+  background-color:rgb(0, 48, 28);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+}
+
+.seatIndicator {
+  width: 100px;
+  height: 100px;
+}
+
+.navbarElement {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+#movieChangingButtons {
+  margin-bottom: 20px;
 }

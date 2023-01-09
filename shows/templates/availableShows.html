@@ -1,14 +1,26 @@
 {% extends 'base_layout.html' %} {% block content %}
 <h1>Movie List</h1>
-<div class="availableShowList">
+
+<div id="movieChangingButtons">
   <a href="{% url 'shows:addNewMovie' %}">Schedule a new Movie</a>
   <a href="{% url 'shows:editMovie' %}">Edit an existing Movie</a>
+</div>
+
+<div class="availableShowList">
   {% for newShow in shows %}
   <div class="showBlock">
+    
     <img src="{{newShow.posterImage.url}}" class="posterImage" />
+    <div style="margin-left: 10px;">
     <h2>{{newShow.title}}</h2>
-    <a href="{% url 'shows:checkMovieDetails' slug=newShow.slug %}">Check this movie.</a>
+    <p>{{newShow.description}}</p>
+    <a href="{% url 'shows:checkMovieDetails' slug=newShow.slug %}"
+      >Check this movie.</a
+    >
+    <div>{{newShow.startTime}}-{{newShow.endTime}} on {{newShow.date}}</div>
   </div>
+  </div>
+  
   {% endfor %}
 </div>
 {% endblock %}

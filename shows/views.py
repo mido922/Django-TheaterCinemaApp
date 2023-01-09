@@ -44,5 +44,15 @@ def editMovieDetails(request,slug):
 
 def checkMovieDetails(request,slug):
   movie = newShow.objects.get(slug=slug)
-  return render(request, 'checkMovieDetails.html', {'movie':movie})
+  x="a" 
 
+  if movie.screeningRoom==1:
+    totalSeats = x*20
+  else:
+    totalSeats = x*30
+  return render(request, 'checkMovieDetails.html', {'movie':movie, 'totalSeats':totalSeats})
+
+
+
+# Screening Room 1 is 20 seats
+# Screening Room 2 is 30 seats
