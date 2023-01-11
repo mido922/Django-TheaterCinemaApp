@@ -2,8 +2,10 @@
 <h1>Movie List</h1>
 
 <div id="movieChangingButtons">
+  {% if user.is_authenticated and user.userRole == manager and user.managerValidated == True %}
   <a href="{% url 'shows:addNewMovie' %}">Schedule a new Movie</a>
   <a href="{% url 'shows:editMovie' %}">Edit an existing Movie</a>
+  {% endif %}
 </div>
 
 <div class="availableShowList">

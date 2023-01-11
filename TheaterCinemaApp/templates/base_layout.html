@@ -13,8 +13,21 @@
     <nav id="navbar">
       <a href="{% url 'shows:list' %}"><img src="{% static 'logo.png' %}" id="logoImage" class ="navbarElement"/></a>
       <a href="{% url 'shows:list' %}" class ="navbarElement">Browse Movies</a>
+      {% if user.is_authenticated %}
+      Logged in as {{user}}
+      <form
+        action="{% url 'accounts:logout' %}"
+        class="logout-link"
+        method="post"
+        style="display:inline"
+      >
+        {% csrf_token %}
+        <button type="submit" class="nav-links">Logout</button>
+      {% else %}
       <a href="{% url 'accounts:signup' %}" class ="navbarElement">Sign up</a>
       <a href="{% url 'accounts:login' %}" class ="navbarElement">Log In</a>
+      {% endif %}
+      
     </nav>
 
     {% block content %} {% endblock %}

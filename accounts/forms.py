@@ -1,7 +1,19 @@
 from django import forms
-from . import models
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
-class addNewUser(forms.ModelForm):
-  class Meta:
-    model = models.User
-    fields = ['username, password, firstname, lastname, email, userRole, managerValidated']
+
+class registrationForm(UserCreationForm):
+
+  CHOICES = (
+      ("customer", 'Customer'),
+      ("manager", 'Manager'),
+  )
+
+  username = forms.CharField(max_length=100, required=True),
+  password1 = forms.CharField(max_length=100, required=True),
+  password2 = forms.CharField(max_length=100, required=True),
+  first_name = forms.CharField(max_length=100, required=True),
+  last_name = forms.CharField(max_length=100, required=True),
+  email = forms.EmailField(max_length=100,required=True)
+  role = forms.ChoiceField(required=True, choices=CHOICES)
