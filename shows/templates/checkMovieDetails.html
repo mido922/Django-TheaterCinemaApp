@@ -6,11 +6,11 @@
     <h2>{{movie.title}}</h2>
 
 
-    <h2>Seat Availability: </h2>
+    <h2>Seat Availability: {{movie.remainingSeats}}/30</h2>
 
     <div id="seatsDiagram">
       {% for i in totalSeats %} 
-        {% if forloop.counter < movie.remainingSeats %}
+        {% if forloop.counter <= movie.remainingSeats %}
           <img src="{% static 'unreservedSeat.png' %}" class="seatIndicator"></img>
         {% else %}
           <img src="{% static 'reservedSeat.png' %}" class="seatIndicator"></img>
@@ -21,6 +21,7 @@
 </div>
 
 {%endblock%}
+
 
 
 #'x'|rjust:20 

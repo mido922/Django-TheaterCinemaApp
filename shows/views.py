@@ -4,6 +4,7 @@ from .models import newShow
 from django.contrib.auth.decorators import login_required
 from . import forms
 from django.shortcuts import get_object_or_404
+import re
 
 # Create your views here.
 
@@ -17,11 +18,13 @@ def addNewMovie(request):
   if request.method == 'POST':
     form = forms.addNewShow(request.POST, request.FILES)
     if form.is_valid():
-      #Save article to database
       instance = form.save(commit=False)
       instance.author = request.user
       instance.save()
       return redirect('shows:list')
+    else:
+      return render(request, 'addNewMovie.html')
+
   else:
     form = forms.addNewShow()
   return render(request, 'addNewMovie.html', {'form':form})
@@ -34,7 +37,6 @@ def editMovieDetails(request,slug):
   if request.method == 'POST':
     form = forms.addNewShow(request.POST, request.FILES)
     if form.is_valid():
-      #Save article to database
       form.save()
       return redirect('shows:list')
   else:

@@ -1,9 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import  AbstractUser, User
 
-
-
-
 # Create your models here.
 
 class myUser(AbstractUser):
@@ -13,8 +10,8 @@ class myUser(AbstractUser):
       ("customer", 'Customer'),
       ("manager", 'Manager'),
   )
-  
-  role = models.ChoiceField(required=True, choices=CHOICES)
+
+  role = models.CharField(max_length= 8, choices=CHOICES)
   managerValidated = models.BooleanField(default=False)
 
 

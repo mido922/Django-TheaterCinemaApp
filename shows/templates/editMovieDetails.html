@@ -1,5 +1,8 @@
 {% extends 'base_layout.html' %} {% block content %}
 
+{% if user.managerValidated %}
+
+
 <div class="addNewMovie">
   <h1>You are editing {{movie.title}}</h1>
   <p>Details:
@@ -17,5 +20,12 @@
     <input type="submit" value="Change">
   </form>
 <div>
+
+
+{% else %}
+
+<div> 404 </div>
+
+{% endif %}
 
 {%endblock%}
