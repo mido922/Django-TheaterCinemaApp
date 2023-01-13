@@ -15,7 +15,7 @@ class newShow(models.Model):
 
   title = models.CharField(max_length=100,default="untitled")
   slug = models.SlugField(default="")
-  date = models.DateField(default= "1900")
+  date = models.DateField(default= "1900-01-01")
   description = models.TextField(default="To Be Filled")
   posterImage = models.ImageField(default='default.png')
   startTime = models.TimeField(default='00:00')

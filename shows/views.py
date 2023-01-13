@@ -6,6 +6,7 @@ from . import forms
 from django.shortcuts import get_object_or_404
 import re
 
+
 # Create your views here.
 
 def show_list(request):
@@ -15,11 +16,13 @@ def show_list(request):
 
 
 def addNewMovie(request):
+  print(request)
   if request.method == 'POST':
     form = forms.addNewShow(request.POST, request.FILES)
     if form.is_valid():
       instance = form.save(commit=False)
-      instance.author = request.user
+      instance.slug = instance.title.lower().replace(" ", "-")
+      
       instance.save()
       return redirect('shows:list')
     else:
@@ -27,6 +30,8 @@ def addNewMovie(request):
 
   else:
     form = forms.addNewShow()
+    # field = form.fields['slug']
+    # field.widget = field.hidden_widget()
   return render(request, 'addNewMovie.html', {'form':form})
 
 def editMovieList(request):
@@ -46,13 +51,13 @@ def editMovieDetails(request,slug):
 
 def checkMovieDetails(request,slug):
   movie = newShow.objects.get(slug=slug)
-  x="a" 
+  x=1
 
   if movie.screeningRoom==1:
     totalSeats = x*20
   else:
     totalSeats = x*30
-  return render(request, 'checkMovieDetails.html', {'movie':movie, 'totalSeats':totalSeats})
+  return render(request, 'checkMovieDetails.html', {'movie':movie, 'totalSeats':range(totalSeats)})
 
 
 

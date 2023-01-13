@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.png' %}">
     <title>Not Blockbuster</title>
   </head>
   <body>
@@ -23,6 +24,7 @@
       >
         {% csrf_token %}
         <button type="submit" class="nav-links">Logout</button>
+        </form>
       {% else %}
       <a href="{% url 'accounts:signup' %}" class ="navbarElement">Sign up</a>
       <a href="{% url 'accounts:login' %}" class ="navbarElement">Log In</a>
