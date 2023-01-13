@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from . import forms
 from django.shortcuts import get_object_or_404
 import re
+from .models import reservation
 
 
 # Create your views here.
@@ -51,16 +52,19 @@ def editMovieDetails(request,slug):
 
 def checkMovieDetails(request,slug):
   movie = newShow.objects.get(slug=slug)
+  reservations = reservation.objects.filter(title=slug)
   x=1
-
+  print(reservations)
   if movie.screeningRoom==1:
     totalSeats = x*20
   else:
     totalSeats = x*30
-  return render(request, 'checkMovieDetailscopy.html', {'movie':movie, 'totalSeats':range(totalSeats)})
+  return render(request, 'checkMovieDetailscopy.html', {'reservations':reservations, 'movie':movie, 'totalSeats':range(totalSeats)})
 
 def checkSeatDetails(request, seatCode, movie):
 
+  reservations = reservation.objects.get(movie=movie)
+  print(reservations)
   return render(request, 'seatDetails.html', {'seatCode': seatCode})
 
 # Screening Room 1 is 20 seats
