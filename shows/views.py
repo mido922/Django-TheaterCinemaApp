@@ -57,7 +57,7 @@ def checkMovieDetails(request,slug):
     totalSeats = x*20
   else:
     totalSeats = x*30
-  return render(request, 'checkMovieDetails.html', {'movie':movie, 'totalSeats':range(totalSeats)})
+  return render(request, 'checkMovieDetailscopy.html', {'movie':movie, 'totalSeats':range(totalSeats)})
 
 def checkSeatDetails(request, seatCode, movie):
 

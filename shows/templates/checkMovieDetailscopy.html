@@ -5,20 +5,19 @@
     <img src="{{movie.posterImage.url}}" style="width: 200px;height: 200px"/>
     <h2>{{movie.title}}</h2>
 
-
     <h2>Seat Availability: {{movie.remainingSeats}}/{% if movie.screeningRoom == 1 %} 20 {% else %} 30 {% endif%}</h2>
-
 
     <div id="seatsDiagram">
       {% for i in totalSeats %} 
-        {% if forloop.counter <= movie.remainingSeats %}
-          <img src="{% static 'unreservedSeat.png' %}" class="seatIndicator"><a href="{% url 'shows:checkSeatDetails' seatCode=forloop.counter %}"
-          >Check this seat.</a
-        ></img>
-        {% else %}
-          <img src="{% static 'reservedSeat.png' %}" class="seatIndicator">a href="{% url 'shows:checkSeatDetails' seatCode=forloop.counter %}"
-          >Check this seat.</a
-        ></img>
+        {% if forloop.counter <= totalSeats %}
+        
+          {% for reservation in reservations %}
+            {% if reservation.title == movie.title %}
+            <div> Seat found! <div>
+              {% endif %}
+
+
+          {% endfor %}
         {% endif %}
       {% endfor %}
     </div>
