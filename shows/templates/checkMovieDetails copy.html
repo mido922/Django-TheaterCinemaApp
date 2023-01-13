@@ -2,19 +2,25 @@
 
 <div class="movieDetails">
   <div class="movie">
-    <img src="{{movie.posterImage.url}}" width="200px," height="200px" />
+    <img src="{{movie.posterImage.url}}" style="width: 200px;height: 200px"/>
     <h2>{{movie.title}}</h2>
 
+
+    <h2>Seat Availability: {{movie.remainingSeats}}/{% if movie.screeningRoom == 1 %} 20 {% else %} 30 {% endif%}</h2>
+
+
     <div id="seatsDiagram">
-      {% for i in 'x'|rjust:"30" %} {% if forloop.counter < movie.remainingSeats
-      %}
-
-      <div class="seatIndicator">{{forloop.counter}}Yes</div>
-
-      {% else %}
-
-      <div class="seatIndicator">{{forloop.counter}}: No</div>
-      D {% endif %} {% endfor %}
+      {% for i in totalSeats %} 
+        {% if forloop.counter <= movie.remainingSeats %}
+          <img src="{% static 'unreservedSeat.png' %}" class="seatIndicator"><a href="{% url 'shows:checkSeatDetails' seatCode=forloop.counter %}"
+          >Check this seat.</a
+        ></img>
+        {% else %}
+          <img src="{% static 'reservedSeat.png' %}" class="seatIndicator">a href="{% url 'shows:checkSeatDetails' seatCode=forloop.counter %}"
+          >Check this seat.</a
+        ></img>
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
 </div>

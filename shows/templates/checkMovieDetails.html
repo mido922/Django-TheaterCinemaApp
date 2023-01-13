@@ -12,10 +12,14 @@
     <div id="seatsDiagram">
       {% for i in totalSeats %} 
         {% if forloop.counter <= movie.remainingSeats %}
-          <img src="{% static 'unreservedSeat.png' %}" class="seatIndicator"></img>
+          <img src="{% static 'unreservedSeat.png' %}" class="seatIndicator"><a href="{% url 'shows:checkSeatDetails' seatCode=forloop.counter %}"
+          >Check this seat.</a
+        ></img>
         {% else %}
-          <img src="{% static 'reservedSeat.png' %}" class="seatIndicator"></img>
-        {% endif %} 
+          <img src="{% static 'reservedSeat.png' %}" class="seatIndicator">a href="{% url 'shows:checkSeatDetails' seatCode=forloop.counter %}"
+          >Check this seat.</a
+        ></img>
+        {% endif %}
       {% endfor %}
     </div>
   </div>

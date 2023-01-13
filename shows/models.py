@@ -25,3 +25,9 @@ class newShow(models.Model):
 
   def __str__(self):
     return self.title
+
+
+class reservation(models.Model):
+  title = models.CharField(max_length=100,default="untitled")
+  seatNumber = models.IntegerField("default = 0")
+  reservee = models.CharField(max_length=100,default="untitled")
