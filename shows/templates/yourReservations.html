@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %} {% block content %} {% load static %}
+
+<div class="yourReservations">
+
+  {% for reservation in reservations %}
+  <div> You reserved Seat Number {{reservation.seatNumber}} in {{reservation.title}} for {{reservation.startTime}}
+    You can cancel this reservation until 3 hours until the movie starts.
+    
+    Click here to cancel.
+
+  </div>
+  {% endfor %}
+  
+</div>
+
+{%endblock%}
+
+
+

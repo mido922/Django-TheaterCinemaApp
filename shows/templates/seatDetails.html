@@ -1,9 +1,20 @@
 {% extends 'base_layout.html' %} {% block content %} {% load static %}
 
 <div class="movieDetails">
-  You are checking seat number {{seatCode}}
+  You are checking seat number {{seatCode}} for {{movie.title}}
 
 
+
+  Click here to reserve this seat:
+<form
+    class="site-form"
+    action="{% url 'shows:reserveASeat' seatCode=seatCode slug=movie.slug %}"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %} {{form}}
+    <input type="submit" value="Click" />
+  </form>
   
 </div>
 

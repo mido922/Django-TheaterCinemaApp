@@ -9,10 +9,13 @@ from django.conf import settings
 app_name = 'shows'
 
 urlpatterns = [
+   path('checkMovie/seatDetails/<slug:slug>/<int:seatCode>', views.reserveASeat, name ="reserveASeat"),
    path('checkMovie/<slug:slug>/', views.checkMovieDetails, name ="checkMovieDetails"),
    path('editMovie/<slug:slug>/', views.editMovieDetails, name ="editMovieDetails"),
    path('editMovieList/', views.editMovieList, name="editMovie"),
    path('addNewMovie', views.addNewMovie, name="addNewMovie"),
+   path('yourReservations', views.yourReservations, name="yourReservations"),
+   path('errorPage', views.errorPage, name="errorPage"),
    path('', views.show_list, name="list"),
 ]
 

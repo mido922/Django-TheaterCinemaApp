@@ -6,20 +6,18 @@
     <h2>{{movie.title}}</h2>
 
     <div id="seatsDiagram">
-      {% for i in totalSeats %}
-        {% for reservation in reservations %}
-        
-          {% if forloop.counter == reservation.SeatNumber %}
-          <div> hello <div>
-
-          {% endif %}
-
-
-
-        {% endfor %}
+      {% for i in seatDiagram %}
+        {% if i == "Empty Seat" %}
+            <a href="{% url 'shows:reserveASeat' seatCode=forloop.counter slug=movie.slug %}"> <img src="{% static 'unreservedSeat.png' %}" class="seatIndicator"></img> </a>
+        {% else %}
+            <img src="{% static 'reservedSeat.png' %}" class="seatIndicator"></img>
+        {% endif %}
       {% endfor %}
+
+
     </div>
   </div>
 </div>
 
 {%endblock%}
+

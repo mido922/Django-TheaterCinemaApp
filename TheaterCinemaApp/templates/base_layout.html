@@ -24,7 +24,8 @@
       >
         {% csrf_token %}
         <button type="submit" class="nav-links">Logout</button>
-        </form>
+      </form>
+      <a href="{% url 'shows:yourReservations' %}" class ="navbarElement">Your Reservations</a>
       {% else %}
       <a href="{% url 'accounts:signup' %}" class ="navbarElement">Sign up</a>
       <a href="{% url 'accounts:login' %}" class ="navbarElement">Log In</a>
